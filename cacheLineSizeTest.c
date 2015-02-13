@@ -53,15 +53,15 @@ int cacheLineSizeTest(char arr[]){
 }
 
 // Function to get the element with maximum occurrence in an array.
-int maxCount(int a[]){
+int maxCount(int a[], int n){
     int max = 0;
     int index = 0;
     int i;
-    for (i=0; i<10; i++) {
+    for (i=0; i<n; i++) {
         int cur = a[i];
         int curCount = 1;
         int j;
-        for (j=i+1; j<10; j++) {
+        for (j=i+1; j<n; j++) {
             if (a[j] == cur)
                 curCount++;
         }
@@ -74,15 +74,16 @@ int maxCount(int a[]){
 }
 
 int getCacheLineSize(char arr[]){
-    int sizes[10];
-    // Here we run 10 times cacheLineTest to get 10 results of cache line size
+    int n = 20;
+    int sizes[n];
+    // Here we run n times cacheLineTest to get 10 results of cache line size
     // Then we take the one with maximum occurrence.
     int i;
-    for (i=0; i<10; i++) {
+    for (i=0; i<n; i++) {
         printf("Test %d: \n", i);
         sizes[i] = cacheLineSizeTest(arr);
     }
-    return maxCount(sizes);
+    return maxCount(sizes, n);
 }
 
 int main(int argc, char *argv[])
