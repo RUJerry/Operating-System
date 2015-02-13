@@ -60,7 +60,8 @@ int maxCount(int a[]){
     for (i=0; i<10; i++) {
         int cur = a[i];
         int curCount = 1;
-        for (int j=i+1; j<10; j++) {
+        int j;
+        for (j=i+1; j<10; j++) {
             if (a[j] == cur)
                 curCount++;
         }
