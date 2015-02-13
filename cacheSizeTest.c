@@ -48,7 +48,7 @@ int cacheJumpPoint(double steps[]){
     int i;
     for (i=1; i<15; i++) {
         printf("ratio: %6.6f \n", steps[i]/pre);
-        if (steps[i]/pre > 1.5) {
+        if (steps[i]/pre > 1.25) {
             return 1<<(i-1);
         }
         if (0.8 < steps[i]/pre || steps[i]/pre < 1.2) {
