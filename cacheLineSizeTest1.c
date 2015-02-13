@@ -13,7 +13,8 @@
 int getJumpPoint(double steps[]){
     double pre = steps[0];
     int flat = 0;
-    for (int i=1; i<13; i++) {
+    int i=1;
+    for (i=1; i<13; i++) {
         if (flat && steps[i]/pre < 0.85 )
             return 1<<(i-1);
         if (steps[i]/pre > 0.85 )
@@ -33,7 +34,7 @@ int cacheLineSizeTest(char arr[]){
     double steps[13];
     clock_t start, finish;
     
-    for (int i=0; i<ARR_SIZE; i++) {
+    for (i=0; i<ARR_SIZE; i++) {
         arr[i] = 'a';
     }
 
@@ -55,7 +56,8 @@ int cacheLineSizeTest(char arr[]){
 int maxCount(int a[]){
     int max = 0;
     int index = 0;
-    for (int i=0; i<10; i++) {
+    int i;
+    for (i=0; i<10; i++) {
         int cur = a[i];
         int curCount = 1;
         for (int j=i+1; j<10; j++) {
@@ -74,7 +76,8 @@ int getCacheLineSize(char arr[]){
     int sizes[10];
     // Here we run 10 times cacheLineTest to get 10 results of cache line size
     // Then we take the one with maximum occurrence.
-    for (int i=0; i<10; i++) {
+    int i;
+    for (i=0; i<10; i++) {
         printf("Test %d: \n", i);
         sizes[i] = cacheLineSizeTest(arr);
     }
