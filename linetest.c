@@ -44,7 +44,7 @@ int cacheLineSizeTest(char arr[]){
             arr[i] = 'b';
         }
         finish = clock();
-        elapsedTime = (double)((finish - start)/CLOCKS_PER_SEC);
+        elapsedTime = (double)((double)finish - (double)start)/(double)CLOCKS_PER_SEC;
         steps[j++] = elapsedTime;
         printf("steps: %5d run time: %8.5f \n", k, elapsedTime);
     }
