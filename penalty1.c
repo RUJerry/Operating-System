@@ -190,9 +190,9 @@ double cacheMissPenaltyTest(int cacheSize, char arr[]){
         arr[i] = 'b';
     }
     finish = clock();
-    elapsedTime = (double)(finish - start)/CLOCKS_PER_SEC;
+    elapsedTime = 1000*(double)(finish - start)/CLOCKS_PER_SEC;
     
-    penalty = 1000*elapsedTime/(ARR_SIZE / (2*cacheSize*KB) );
+    penalty = elapsedTime/(ARR_SIZE / (2*cacheSize*KB) );
     printf("time: %8.8f gaps: %3d Cache miss penalty: %6.8f us \n",elapsedTime, ARR_SIZE / (2*cacheSize*KB), penalty*1000);
     
     //srand(time(NULL));
