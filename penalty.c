@@ -217,7 +217,7 @@ int main(int argc, char *argv[]){
     
     //int cacheLineSize = getCacheLineSize(arrc);
     //int cacheSize = getCacheSize(arr);
-    double penalty = cacheMissPenalty(256, arrc);
+    double penalty = cacheMissPenalty(6*KB, arrc);
     
     //printf("Cache Block/Line Size: %d B \n", cacheLineSize);
     //printf("Cache size: %d KB \n", cacheSize);
