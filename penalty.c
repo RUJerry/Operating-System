@@ -191,6 +191,7 @@ double cacheMissPenaltyTest(int cacheSize, char arr[]){
     }
     finish = clock();
     elapsedTime = (double)(finish - start)/CLOCKS_PER_SEC;
+    printf("elapsedTime: %6.8f us \n", elapsedTime);
     penalty = 1000*elapsedTime/(ARR_SIZE / (2*cacheSize*KB) );
     printf("Cache Miss Penalty: %6.8f us \n", penalty*1000);
     
