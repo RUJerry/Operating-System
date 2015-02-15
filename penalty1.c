@@ -191,14 +191,14 @@ double cacheMissPenaltyTest(int cacheSize, char arr[]){
     }
     finish = clock();
     elapsedTime = (double)(finish - start)/CLOCKS_PER_SEC;
-    printf("elapsedTime: %6.8f us \n", elapsedTime);
-    penalty = 1000*elapsedTime/(ARR_SIZE / (2*cacheSize*KB) );
-    printf("Cache Miss Penalty: %6.8f us \n", penalty*1000);
     
-    srand(time(NULL));
-    int x = (rand() % cacheSize);
-    arr[cacheSize-x] = 4;
-    return penalty;
+    penalty = 1000*elapsedTime/(ARR_SIZE / (2*cacheSize*KB) );
+    printf("time: %8.8f gaps: %3d Cache miss penalty: %6.8f us \n",elapsedTime, ARR_SIZE / (2*cacheSize*KB), penalty*1000);
+    
+    //srand(time(NULL));
+    //int x = (rand() % cacheSize);
+    //arr[cacheSize-x] = 4;
+    return 1000*penalty;
 }
 
 double cacheMissPenalty(int cacheSize, char arr[]){
@@ -214,15 +214,14 @@ double cacheMissPenalty(int cacheSize, char arr[]){
 int main(int argc, char *argv[]){
     static int arr[ARR_SIZE];
     static char arrc[ARR_SIZE];
-    /*
-    int cacheLineSize = getCacheLineSize(arrc);
-    int cacheSize = getCacheSize(arr);
     
-    printf("Cache Block/Line Size: %d B \n", cacheLineSize);
-    printf("Cache size: %d KB \n", cacheSize);
-     */
+    //int cacheLineSize = getCacheLineSize(arrc);
+    //int cacheSize = getCacheSize(arr);
     double penalty = cacheMissPenalty(256, arrc);
-    printf("av Cache Miss Penalty: %6.8f us \n", penalty*1000);
+    
+    //printf("Cache Block/Line Size: %d B \n", cacheLineSize);
+    //printf("Cache size: %d KB \n", cacheSize);
+    printf("Cache Miss Penalty: %6.8f us \n", penalty);
     return 0;
 }
 
