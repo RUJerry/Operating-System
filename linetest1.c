@@ -16,7 +16,7 @@ int getJumpPoint(double steps[]){
     int i=1;
     for (i=1; i<13; i++) {
         if (flat && steps[i]/pre < 0.85 )
-            return 1<<(i-1);
+            return 1<<(i-2);
         if (steps[i]/pre > 0.85 )
             flat = 1;
         pre = steps[i];
