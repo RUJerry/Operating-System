@@ -1,11 +1,3 @@
-//
-//  main.c
-//  cacheSizeTest
-//
-//  Created by Junjie Huang on 2/13/15.
-//  Copyright (c) 2015 Junjie Huang. All rights reserved.
-//
-
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -190,16 +182,18 @@ double cacheMissPenaltyTest(int cacheSize, char arr[]){
         arr[i] = 'b';
     }
     finish = clock();
-    elapsedTime = 1000*(double)(finish - start)/CLOCKS_PER_SEC;
+    elapsedTime = 1000*1000*(double)(finish - start)/CLOCKS_PER_SEC;
     
     penalty = elapsedTime/(ARR_SIZE / (2*cacheSize*KB) );
-    printf("time: %8.8f gaps: %3d Cache miss penalty: %6.8f us \n",elapsedTime, ARR_SIZE / (2*cacheSize*KB), penalty*1000);
+    printf("time: %8.8f gaps: %3d Cache miss penalty: %6.8f us \n",elapsedTime, ARR_SIZE / (2*cacheSize*KB), penalty);
+    
     
     //srand(time(NULL));
     //int x = (rand() % cacheSize);
     //arr[cacheSize-x] = 4;
-    return 1000*penalty;
+    return penalty;
 }
+
 
 double cacheMissPenalty(int cacheSize, char arr[]){
     int i;
@@ -217,7 +211,7 @@ int main(int argc, char *argv[]){
     
     //int cacheLineSize = getCacheLineSize(arrc);
     //int cacheSize = getCacheSize(arr);
-    double penalty = cacheMissPenalty(6*KB, arrc);
+    double penalty = cacheMissPenalty(256, arrc);
     
     //printf("Cache Block/Line Size: %d B \n", cacheLineSize);
     //printf("Cache size: %d KB \n", cacheSize);
