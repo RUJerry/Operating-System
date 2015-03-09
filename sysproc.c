@@ -110,6 +110,6 @@ sys_signal(void)
   int handler;
   argint(0, &signum);
   argint(1, &handler);
-  proc->handlers[signum] = hanlder;
+  proc->handlers[signum] = handler;
   return handler;
 }
