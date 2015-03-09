@@ -7,7 +7,7 @@
 #include "x86.h"
 #include "traps.h"
 #include "spinlock.h"
-
+#include "signal.h"
 // Interrupt descriptor table (shared by all CPUs).
 struct gatedesc idt[256];
 extern uint vectors[];  // in vectors.S: array of 256 entry pointers
@@ -76,6 +76,14 @@ trap(struct trapframe *tf)
     cprintf("cpu%d: spurious interrupt at %x:%x\n",
             cpu->id, tf->cs, tf->eip);
     lapiceoi();
+    break;
+  // add the new case here:
+  case T_DIVIDE:
+    if(proc->handlers[SIGFPE] != -1){
+	tf->eip = proc->handlers[SIGFPE];
+	tf->esp -= 8;
+	*((int*)(tf->esp + 4)) = SIGFPE;
+    } 
     break;
    
   //PAGEBREAK: 13

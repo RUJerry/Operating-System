@@ -1,6 +1,8 @@
 #ifndef XV6_SIGNAL
 #define XV6_SIGNAL
 
+#define SIGFPE 0
+typedef void (sighandler_t)(int);
 // You should define anything signal related that needs to be shared between
 // kernel and userspace here
 

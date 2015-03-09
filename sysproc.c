@@ -6,7 +6,7 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
-
+#include "signal.h"
 int
 sys_fork(void)
 {
@@ -101,4 +101,15 @@ sys_halt(void)
   for( ; *p; p++)
     outw(0xB004, 0x2000);
   return 0;
+}
+
+int
+sys_signal(void)
+{
+  int signum;
+  int handler;
+  argint(0, &signum);
+  argint(1, &handler);
+  proc->handlers[signum] = hanlder;
+  return handler;
 }

@@ -69,7 +69,12 @@ found:
   p->context = (struct context*)sp;
   memset(p->context, 0, sizeof *p->context);
   p->context->eip = (uint)forkret;
-
+  
+  int i;
+  for(i = 0; i<256; ++i){
+  	p-> handlers[i] = -1;
+  }
+  
   return p;
 }
 
