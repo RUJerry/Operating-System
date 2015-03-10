@@ -83,9 +83,14 @@ trap(struct trapframe *tf)
 	//*((int*)(tf->esp - 4)) = SIGFPE;
 	tf->esp -= 4;
 	*((int*)(tf->esp)) = tf->eip;
-	__asm__ ("pushl %eax");
-	__asm__ ("pushl %ecx");
-	__asm__ ("pushl %edx");
+	
+	tf->esp -= 4;
+	*((int*)(tf->esp)) = tf->eax;
+	tf->esp -= 4;
+	*((int*)(tf->esp)) = tf->ecx;
+	tf->esp -= 4;
+	*((int*)(tf->esp)) = tf->edx;
+	
 	tf->esp -= 8;
 	*((int*)(tf->esp + 4)) = SIGFPE;
 	*((int*)(tf->esp)) = proc->restorer;

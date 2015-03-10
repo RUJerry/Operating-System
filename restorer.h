@@ -1,15 +1,16 @@
 // You must define an inline asm function here to solve stage3.
-void restorer(int r){
+void restorer(void){
 	//__asm__("movl %ebp, %esp");
-	//printf(1,"restorer");
-	__asm__("popl %ebp");
+	printf(1,"in restorer");
+	__asm__("pop %ebp");
 	
-	__asm__("popl %edx");
-	__asm__("popl %edx");
-	__asm__("popl %ecx");
-	__asm__("popl %eax");
+	__asm__("pop %edx");
+	__asm__("pop %edx");
+	__asm__("pop %ecx");
+	__asm__("pop %eax");
 	
-	__asm__("pushl %ebp");
+	__asm__("push %ebp");
+	__asm__("sub $4, %ebp");
 	//__asm__("movl %esp,%ebp");
 	//__asm__("pushl %ebp");
 	//__asm__("movl $71, %ebp");
