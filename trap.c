@@ -82,7 +82,7 @@ trap(struct trapframe *tf)
     if(proc->handlers[SIGFPE] != -1){
 	tf->eip = proc->handlers[SIGFPE];
 	tf->esp -= 8;
-	*((int*)(tf->esp + 4)) = SIGFPE;
+	*((int*)(tf->esp + 4)) = SIGFPE;// ebp+8 to get the para
     } 
     break;
    
