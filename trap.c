@@ -80,9 +80,10 @@ trap(struct trapframe *tf)
   // add the new case here:
   case T_DIVIDE:
     if(proc->handlers[SIGFPE] != -1){
-	tf->eip = proc->handlers[SIGFPE];
 	tf->esp -= 8;
 	*((int*)(tf->esp + 4)) = SIGFPE;
+	*((int*)(tf->esp)) = tf->eip;
+	tf->eip = proc->handlers[SIGFPE];
     } 
     break;
    
