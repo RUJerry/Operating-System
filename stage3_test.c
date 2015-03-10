@@ -15,7 +15,7 @@ int main(void)
 {
     register int ecx asm ("%ecx");
     
-    signal(-1, (sighandler_t) restorer);   // save the address of restorer function inside the kernel.
+    signal(-1, restorer);   // save the address of restorer function inside the kernel.
     signal(SIGFPE, handle_signal);         // register the actual signal for divide by zero.
 
     int x = 5;
