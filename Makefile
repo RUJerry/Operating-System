@@ -175,6 +175,7 @@ UPROGS=\
 	_shutdown\
 	_stage1_test\
 	_stage2_timing\
+	
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

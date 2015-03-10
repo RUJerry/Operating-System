@@ -67,6 +67,7 @@ struct proc {
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
   int handlers[256];	       // Store users' signal handler functions
+  int restorer;                // variable to store the address of restorer function
 };
 
 // Process memory is laid out contiguously, low addresses first:

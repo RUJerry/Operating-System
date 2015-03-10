@@ -74,7 +74,7 @@ found:
   for(i = 0; i<256; ++i){
   	p-> handlers[i] = -1;
   }
-  
+  p-> restorer = -2;
   return p;
 }
 
