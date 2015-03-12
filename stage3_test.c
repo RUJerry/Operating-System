@@ -8,7 +8,8 @@
 void handle_signal(int signum)
 {
     __asm__ ("movl $0x0,%ecx\n\t");
-    printf(1,"in handle signal");
+    __asm__ ("movl $0x74, 24(%ebp)\n\t");
+    //printf(1,"in handle signal\n");
 	// Add your code to skip the return ip here
 } 
 
